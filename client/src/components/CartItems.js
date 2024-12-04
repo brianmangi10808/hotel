@@ -22,7 +22,7 @@ const CartItems = ({ cart, updateCartQuantity, clearCart }) => {
     }
 
     try {
-      const response = await fetch('http://localhost:3001/api/order', {
+      const response = await fetch('https://swiftel.co.ke/api/order', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

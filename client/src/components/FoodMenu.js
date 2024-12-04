@@ -17,7 +17,7 @@ const FoodMenu = ({ cart, addToCart }) => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get(`http://localhost:3001/api/categories/1/products`);
+        const response = await axios.get(`https://swiftel.co.ke/api/categories/1/products`);
         setProducts(response.data); // Set the products data
         setLoading(false);
       } catch (err) {
