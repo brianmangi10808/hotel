@@ -5,6 +5,7 @@ import HomeIcon from '@mui/icons-material/Home';
 import ExploreIcon from '@mui/icons-material/Explore';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import axios from 'axios';
+import'./loader.css'
 
 const BottomNav = () => {
   const [value, setValue] = useState(0);
@@ -24,7 +25,7 @@ const BottomNav = () => {
 
     const fetchOrderStatus = async () => {
       try {
-        const response = await axios.get(`http://localhost:3001/api/orders/status/${tableNumber}`);
+        const response = await axios.get(`https://swiftel.co.ke/api/orders/status/${tableNumber}`);
         setOrderStatus(response.data.status); // Update with the order status
         setError(null);
       } catch (err) {
@@ -41,9 +42,13 @@ const BottomNav = () => {
     const interval = setInterval(fetchOrderStatus, 60000);
     return () => clearInterval(interval);
   }, []);
-
+  
   if (loading) {
-    return <p>Loading...</p>;
+    return (
+      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+      <div className="loader"></div>
+    </div>
+    );
   }
 
   if (error) {  
@@ -54,7 +59,8 @@ return <p>error ...</p>
   const handleNavigation = (newValue) => {
     setValue(newValue);
 
-    if (newValue === 0) navigate('/home'); 
+
+    if (newValue === 0) navigate('/'); 
     if (newValue === 1) navigate('/explore'); 
     if (newValue === 2) navigate('/account'); 
   };

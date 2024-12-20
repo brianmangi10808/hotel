@@ -63,19 +63,19 @@ function App() {
           <Route path="/bottomnav" element={<BottomNav />} />
           </Route>
           <Route path="/food" element={<FoodMenu cart={cart} addToCart={addToCart} />} />
-          <Route path="/drinks" element={<DrinksMenu />} />
-          <Route path="/desserts" element={<DessertMenu />} />
+          <Route path="/drinks" element={<DrinksMenu cart={cart} addToCart={addToCart} />} />
+          <Route path="/desserts" element={<DessertMenu cart={cart} addToCart={addToCart} />} />
           <Route path="/home" element={<Home />} />
         <Route path="/explore" element={<Explore />} />
         <Route path="/account" element={<Account />} />
-          <Route path="/beverages" element={<BeverageMenu />} />
+          <Route path="/beverages" element={<BeverageMenu cart={cart} addToCart={addToCart} />} />
           <Route
             path="/cartitems"
             element={<CartItems cart={cart} updateCartQuantity={updateCartQuantity}  clearCart={clearCart}/>}
           />
         </Routes>
         <Box sx={{ flexGrow: 1 }} />
-        {/* <BottomNav /> */}
+        <BottomNav />
       </Box>
     </Router>
   );

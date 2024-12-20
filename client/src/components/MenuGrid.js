@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { Grid, Card, CardMedia, Typography, Box } from '@mui/material';
-import foodImage from '../assets/food.jpg';
+import foodImage from '../assets/four.webp';
 import drinkImage from '../assets/drink.jpg';
 import dessertImage from '../assets/desert.jpg';
 import beverageImage from '../assets/beverage.jpg';
@@ -9,8 +9,8 @@ import logo from '../assets/logo.png';
 import BottomNav from './BottomNav';
 
 const menuItems = [
-  { title: 'Food Menu', image: foodImage, bgColor: '#F2E2FF', link: '/food' },
-  { title: 'Drinks Menu', image: drinkImage, bgColor: '#FDE386', link: '/drinks' },
+  { title: 'wine Menu', image: foodImage, bgColor: '#F2E2FF', link: '/food' },
+  { title: 'cocktails', image: drinkImage, bgColor: '#FDE386', link: '/drinks' },
   { title: 'Desserts Menu', image: dessertImage, bgColor: '#F8CEB4', link: '/desserts' },
   { title: 'Beverage Menu', image: beverageImage, bgColor: '#AAE6FE', link: '/beverages' },
 ];
@@ -23,14 +23,17 @@ const MenuGrid = () => {
   useEffect(() => {
     const queryParams = new URLSearchParams(location.search);
     const tableNumber = queryParams.get('table');
-
-    if (tableNumber) {
-      localStorage.setItem('tableNumber', tableNumber); // Store in local storage
-    } else {
-      // Redirect to an error page or show an alert
-      alert('Table number is required. Please scan the QR code to continue.');
-      navigate('/'); // Redirect to the home page or any other route
-    }
+    
+    window.onload = function() {
+      let tableNumber = localStorage.getItem('tableNumber');
+      if (!tableNumber) {
+        // Table number not found, prompt user
+        alert('Table number is required. Please scan the QR code to continue.');
+        navigate('/'); // Redirect or handle as needed
+      } else {
+        // Use the table number for whatever is needed on the page
+      }
+    };
   }, [location, navigate]);
 
   return (

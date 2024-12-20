@@ -6,6 +6,7 @@ import headers from '../assets/headers.jpg';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import './loader.css'
 
 const FoodMenu = ({ cart, addToCart }) => {
   const navigate = useNavigate();
@@ -29,7 +30,13 @@ const FoodMenu = ({ cart, addToCart }) => {
     fetchProducts();
   }, [categoryId]);
 
-  if (loading) return <p>Loading products...</p>;
+  if (loading) {
+    return (
+      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+        <div className="loader"></div>
+      </div>
+    );
+  }
   if (error) return <p>{error}</p>;
 
   const getTotalItems = () => cart.reduce((sum, item) => sum + item.quantity, 0);
