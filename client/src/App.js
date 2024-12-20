@@ -75,7 +75,7 @@ function App() {
           />
         </Routes>
         <Box sx={{ flexGrow: 1 }} />
-        <BottomNav />
+        {/* <BottomNav /> */}
       </Box>
     </Router>
   );
