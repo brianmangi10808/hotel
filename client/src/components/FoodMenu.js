@@ -90,7 +90,7 @@ const FoodMenu = ({ cart, addToCart }) => {
                 component="img"
                 image={product.image ? `data:image/jpeg;base64,${product.image}` : headers} // Base64 or fallback
                 alt={product.name}
-                sx={{ borderRadius: 2, height: 200, objectFit: 'cover' }} // Set consistent size
+                sx={{ borderRadius: 2, height: 300, objectFit: 'cover' }} // Set consistent size
               />
             </Grid>
             <Grid item xs={12} md={8}>
