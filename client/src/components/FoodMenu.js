@@ -83,48 +83,56 @@ const FoodMenu = ({ cart, addToCart }) => {
 
       {/* Menu Items Section */}
       {products.map((product) => (
-        <Card key={product.id} sx={{ marginBottom: 4, borderRadius: 2, padding: 2 }}>
-          <Grid container spacing={2}>
-            <Grid item xs={12} md={4}>
-              <CardMedia
-                component="img"
-                image={product.image ? `data:image/jpeg;base64,${product.image}` : headers} // Base64 or fallback
-                alt={product.name}
-                sx={{ borderRadius: 2, height: 300, objectFit: 'cover' }} // Set consistent size
-              />
-            </Grid>
-            <Grid item xs={12} md={8}>
-              <Box>
-                <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                  <Box>
-                    <Typography variant="h6" gutterBottom>
-                      {product.name}
-                    </Typography>
-                    <Typography variant="body2" color="textSecondary" gutterBottom>
-                      {product.description}
-                    </Typography>
-                  </Box>
-                  <Typography variant="body2" color="textSecondary" sx={{ marginBottom: 1 }}>
-                    {product.quantity}
-                  </Typography>
-                </Box>
-
-                <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                  <Typography variant="h6" sx={{ fontWeight: 'bold', marginBottom: 2, color: '#E69873' }}>
-                    ${product.price}
-                  </Typography>
-                  <IconButton
-                    color="primary"
-                    onClick={() => addToCart(product)}
-                    sx={{ backgroundColor: '#E69873', color: '#FFFFFF' }}
-                  >
-                    <AddIcon />
-                  </IconButton>
-                </Box>
-              </Box>
-            </Grid>
-          </Grid>
-        </Card>
+       <Card key={product.id} sx={{ marginBottom: 4, borderRadius: 2, padding: 2 }}>
+       <Grid container spacing={2} alignItems="center">
+         <Grid item xs={12} sm={4}>
+           <CardMedia
+             component="img"
+             image={product.image ? `data:image/jpeg;base64,${product.image}` : headers}
+             alt={product.name}
+             sx={{
+               borderRadius: 2,
+               height: 'auto',
+               maxHeight: '300px',
+               width: '100%',
+               objectFit: 'contain',
+             }}
+           />
+         </Grid>
+         <Grid item xs={12} sm={8}>
+           <Box>
+             <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 2 }}>
+               <Box>
+                 <Typography variant="h6" gutterBottom>
+                   {product.name}
+                 </Typography>
+                 <Typography variant="body2" color="textSecondary" gutterBottom>
+                   {product.description}
+                 </Typography>
+               </Box>
+               <Typography variant="body2" color="textSecondary">
+                 {product.quantity}
+               </Typography>
+             </Box>
+     
+             <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+               <Typography variant="h6" sx={{ fontWeight: 'bold', color: '#E69873' }}>
+                 ${product.price}
+               </Typography>
+               <IconButton
+                 color="primary"
+                 onClick={() => addToCart(product)}
+                 sx={{ backgroundColor: '#E69873', color: '#FFFFFF' }}
+               >
+                 <AddIcon />
+               </IconButton>
+             </Box>
+           </Box>
+         </Grid>
+       </Grid>
+     </Card>
+     
+    
       ))}
 
       {/* Cart Summary Section */}
